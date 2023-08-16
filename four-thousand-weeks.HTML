@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+		
+		<script>
+		let res = document.getElementById('result');
+	 
+	    function render_image(weekInThePast) {
+				console.log(weekInThePast);
+				let img = document.createElement('img');
+				console.log('Black Balloon');
+				img.src = 'https://w7.pngwing.com/pngs/735/379/png-transparent-a-black-balloon-balloon-black-balloon-a-balloon-thumbnail.png';
+				
+				if (weekInThePast == false) {
+					console.log('Red Balloon');
+					img.src ='https://content.presentermedia.com/files/clipart/00013000/13198/single_large_balloon_800_wht.jpg';
+				}
+				img.width=15;
+				img.height=15;
+				document.getElementById('body').appendChild(img);
+				
+		}
+			
+		function calculateWeeksElapsed() {
+		
+			document.getElementById("demo").innerHTML = "";
+			let weekInThePast = true;
+			var weeksInAYear = 52;
+			var x = document.getElementById("age");
+			var currentVal = x.value;
+			var ageInWeeks = weeksInAYear * currentVal;
+			var remainingWeeks = 4000 - ageInWeeks; /* Based on 4000 weeks of lifetime */
+			
+			document.getElementById("demo").innerHTML = "Your age in weeks is : " + ageInWeeks + ", remaining weeks : " + remainingWeeks ;
+			console.log(remainingWeeks);
+			for (let i = 4000; i > 0; i--) {
+				console.log(i);
+				if (i <= remainingWeeks) {
+					weekInThePast = false;
+				}
+				render_image(weekInThePast);
+			}	 
+			 
+		}
+		
+	</script>
+
+	<body id="body">
+	  <label for="age">Enter your age (between 1 and 100):</label>
+	  <input type="number" id="age" name="age" min="1" max="100" value="39">
+	  <button onclick="calculateWeeksElapsed()">Click me</button>
+	  <p id="demo">Hello</p>
+	  
+	  <h2 id="result" style="color:black;"></h2>
+
+	</body>
+
+</html>
